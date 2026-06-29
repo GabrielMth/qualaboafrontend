@@ -1,0 +1,9 @@
+<button
+  type="button"
+  class="cat-pill"
+  [class.active]="active()"
+  (click)="selected.emit()"
+>
+  <span class="cat-icon">{{ icon() }}</span>
+  {{ label() }}
+</button>

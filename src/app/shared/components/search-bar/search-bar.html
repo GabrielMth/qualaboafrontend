@@ -1,0 +1,66 @@
+<div class="search-bar">
+  <input
+    class="search-input"
+    type="text"
+    placeholder="Buscar shows, festas, festivais..."
+    [(ngModel)]="termo"
+    (keyup.enter)="buscar()"
+  />
+
+  <div class="search-divider"></div>
+
+  <div class="search-location-wrap">
+    <div
+      class="search-location"
+      [class.open]="dropdownAberto()"
+      (click)="toggleDropdown()"
+    >
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+        <circle cx="12" cy="9" r="2.5" />
+      </svg>
+      <span>{{ cidadeSelecionada() }}</span>
+      <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path d="M6 9l6 6 6-6" />
+      </svg>
+    </div>
+
+    @if (dropdownAberto()) {
+      <div class="city-dropdown visible" (click)="$event.stopPropagation()">
+        <div class="city-search-wrap">
+          <input
+            class="city-search-input"
+            type="text"
+            placeholder="Buscar cidade..."
+            [(ngModel)]="filtroCidade"
+            autofocus
+          />
+        </div>
+
+        <div class="city-list-scroll">
+          @if (cidadesFiltradas().length === 0) {
+            <div class="city-empty">Nenhuma cidade encontrada</div>
+          }
+
+          @for (grupo of gruposPorLetra(); track grupo.letra) {
+            <div class="city-letter-group">
+              <div class="city-letter-label">{{ grupo.letra }}</div>
+              @for (cidade of grupo.cidades; track cidade.nome) {
+                <div class="city-item" (click)="selecionarCidade(cidade)">
+                  <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                    <circle cx="12" cy="9" r="2.5" />
+                  </svg>
+                  {{ cidade.nome }}
+                  <span class="city-state">{{ cidade.estado }}</span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <button class="search-btn" (click)="buscar()">Buscar</button>
+</div>

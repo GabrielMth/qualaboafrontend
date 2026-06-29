@@ -1,0 +1,16 @@
+<nav>
+  <a class="logo" routerLink="/"><span>Quala</span>boa</a>
+
+  <button class="menu-toggle" (click)="toggleMenu()" [class.open]="menuAberto()" aria-label="Abrir menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="nav-links" [class.open]="menuAberto()">
+    <li><a routerLink="/eventos" (click)="fecharMenu()">Explorar</a></li>
+    <li><a routerLink="/cidades" (click)="fecharMenu()">Cidades</a></li>
+    <li><a routerLink="/eventos/criar" (click)="fecharMenu()">Criar evento</a></li>
+    <li><a class="nav-cta" routerLink="/auth/login" (click)="fecharMenu()">Entrar</a></li>
+  </ul>
+</nav>

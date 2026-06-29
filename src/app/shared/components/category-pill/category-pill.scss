@@ -1,0 +1,44 @@
+@use 'breakpoints' as *;
+
+.cat-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  white-space: nowrap;
+  font-family: 'Syne', sans-serif;
+
+  @include respond(md) {
+    padding: 14px 22px;
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .cat-icon {
+    font-size: 16px;
+
+    @include respond(md) {
+      font-size: 18px;
+    }
+  }
+
+  &:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    transform: translateY(-2px);
+  }
+
+  &.active {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #fff;
+  }
+}

@@ -1,0 +1,39 @@
+// ============================================================
+// QUALABOA — Sistema de breakpoints (mobile-first)
+//
+// Uso dentro de qualquer componente:
+//   @import 'breakpoints';
+//   .algo {
+//     width: 100%;
+//     @include respond(md) { width: 50%; }
+//   }
+// ============================================================
+
+$breakpoints: (
+  sm: 480px,
+  // celulares grandes
+  md: 768px,
+  // tablets
+  lg: 1024px,
+  // notebooks
+  xl: 1280px,
+  // desktops
+  xxl: 1536px // monitores grandes
+);
+
+@mixin respond($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' não existe em $breakpoints.";
+  }
+}
+
+// Atalho para telas que preferem reduced motion (acessibilidade)
+@mixin no-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

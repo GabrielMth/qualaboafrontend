@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Syne', sans-serif;
+  color: var(--text);
+  background: var(--off-white);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+// Foco visível no teclado — acessibilidade, não removido em nenhum componente
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

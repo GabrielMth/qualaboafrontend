@@ -1,0 +1,28 @@
+<a
+  class="event-card"
+  [class.featured]="featured()"
+  [routerLink]="['/eventos', evento().id]"
+>
+  <div class="card-thumb">
+    <span class="thumb-emoji">{{ evento().emoji }}</span>
+    @if (badgeLabel) {
+      <div class="card-badge-wrap">
+        <span class="c-badge" [class]="badgeClass">{{ badgeLabel }}</span>
+      </div>
+    }
+  </div>
+
+  <div class="card-body">
+    <div class="card-cat">{{ evento().categoria }}</div>
+    <div class="card-title">{{ evento().titulo }}</div>
+    <div class="card-footer">
+      <div class="card-info">
+        {{ evento().cidade }} · {{ evento().estado }}<br />
+        {{ evento().dataInicio | date: 'dd MMM' : '' : 'pt-BR' }}
+      </div>
+      <div class="card-price" [class.free]="evento().preco === null">
+        {{ evento().preco === null ? 'Grátis' : (evento().preco | currency: 'BRL') }}
+      </div>
+    </div>
+  </div>
+</a>

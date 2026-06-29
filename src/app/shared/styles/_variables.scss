@@ -1,0 +1,37 @@
+// ============================================================
+// QUALABOA — Design Tokens globais
+// Importado uma vez em src/styles.scss, disponível em :root
+// ============================================================
+
+:root {
+  // Paleta
+  --orange: #FF4D00;
+  --green: #00C94D;
+  --purple: #7B00FF;
+  --black: #0A0A0A;
+  --off-white: #FFFFFF;
+  --text: #111111;
+  --muted: #888;
+  --yellow: #FFE600;
+  --border: #E8E8E8;
+  --bg-soft: #FAFAFA;
+
+  // Espaçamentos (usar sempre via var(), nunca hardcoded em componente)
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 80px;
+
+  // Padding lateral responsivo (fica menor em telas pequenas, sem media query)
+  --page-padding: clamp(20px, 5vw, 48px);
+
+  // Raios
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-pill: 100px;
+
+  // Sombra padrão de cards/dropdowns
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.07);
+  --shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.12);
+}

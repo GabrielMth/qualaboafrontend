@@ -1,0 +1,153 @@
+@use 'breakpoints' as *;
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s, box-shadow 0.25s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  // Card em destaque ocupa 2 colunas e 2 linhas, mas SÓ em telas grandes —
+  // em mobile ele se comporta como qualquer outro card (senão quebra o grid)
+  @include respond(lg) {
+    &.featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+}
+
+.card-thumb {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, var(--orange), var(--purple));
+
+  @include respond(md) {
+    height: 160px;
+  }
+
+  .thumb-emoji {
+    font-size: 40px;
+
+    @include respond(md) {
+      font-size: 44px;
+    }
+  }
+}
+
+// Variação automática de gradiente por posição, sem precisar de lógica no .ts
+.events-grid .event-card:nth-child(5n+1) .card-thumb { background: linear-gradient(135deg, #FF4D00, #E8000D); }
+.events-grid .event-card:nth-child(5n+2) .card-thumb { background: linear-gradient(135deg, #00C94D, #0066FF); }
+.events-grid .event-card:nth-child(5n+3) .card-thumb { background: linear-gradient(135deg, #7B00FF, #E8000D); }
+.events-grid .event-card:nth-child(5n+4) .card-thumb { background: linear-gradient(135deg, #FFE600, #FF4D00); }
+.events-grid .event-card:nth-child(5n+5) .card-thumb { background: linear-gradient(135deg, #0066FF, #7B00FF); }
+
+.event-card.featured .card-thumb {
+  height: 220px;
+
+  @include respond(lg) {
+    height: 300px;
+  }
+}
+
+.card-badge-wrap {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.c-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+
+  &.b-hot { background: var(--orange); color: #fff; }
+  &.b-new { background: var(--green); color: #fff; }
+  &.b-free { background: #111; color: #fff; }
+}
+
+.card-body {
+  padding: var(--space-sm) var(--space-sm) var(--space-sm);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-cat {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--text);
+  margin-bottom: 12px;
+  flex: 1;
+
+  @include respond(md) {
+    font-size: 15px;
+  }
+}
+
+.event-card.featured .card-title {
+  font-size: 17px;
+
+  @include respond(lg) {
+    font-size: 20px;
+  }
+}
+
+.card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-xs);
+}
+
+.card-info {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+
+  @include respond(md) {
+    font-size: 12px;
+  }
+}
+
+.card-price {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--orange);
+  white-space: nowrap;
+
+  @include respond(md) {
+    font-size: 14px;
+  }
+
+  &.free {
+    color: var(--green);
+  }
+}

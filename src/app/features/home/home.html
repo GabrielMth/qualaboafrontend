@@ -1,0 +1,81 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-deco hero-deco-1"></div>
+  <div class="hero-deco hero-deco-2"></div>
+  <div class="hero-deco hero-deco-3"></div>
+
+  <div class="hero-tag">🔥 +1.240 eventos esta semana</div>
+
+  <h1 class="hero-title">
+    SEU PRÓXIMO<br />
+    <span class="accent">ROLÊ COMEÇA</span><br />
+    <span class="outline">AQUI.</span>
+  </h1>
+
+  <p class="hero-sub">Shows, festas, feiras e experiências na sua cidade. Descubra, compre e vai.</p>
+
+  <div class="hero-actions">
+    <button class="btn-primary">Explorar eventos</button>
+    <button class="btn-secondary">Criar evento grátis</button>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">48K</div>
+      <div class="stat-label">Eventos ativos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">320+</div>
+      <div class="stat-label">Cidades</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2M</div>
+      <div class="stat-label">Rolezeiros</div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-section">
+  <app-search-bar></app-search-bar>
+</div>
+
+<!-- CAROUSEL -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Em <span class="accent">destaque</span></h2>
+    <a class="see-all" href="#">Ver todos →</a>
+  </div>
+  <app-carousel [slides]="slides"></app-carousel>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories-section">
+  <div class="section-header">
+    <h2 class="section-title">Explorar por <span class="accent">categoria</span></h2>
+    <a class="see-all" href="#">Ver todas →</a>
+  </div>
+  <div class="categories">
+    @for (cat of categorias; track cat.label) {
+      <app-category-pill
+        [icon]="cat.icon"
+        [label]="cat.label"
+        [active]="categoriaAtiva() === cat.label"
+        (selected)="selecionarCategoria(cat.label)"
+      ></app-category-pill>
+    }
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events-section">
+  <div class="section-header">
+    <h2 class="section-title">Em alta <span class="accent">agora</span></h2>
+    <a class="see-all" href="#">Ver todos →</a>
+  </div>
+  <div class="events-grid">
+    @for (evento of eventos; track evento.id) {
+      <app-event-card [evento]="evento" [featured]="!!evento.destaque"></app-event-card>
+    }
+  </div>
+</section>
