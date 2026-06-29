@@ -16,17 +16,18 @@ nav {
 }
 
 .logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 26px;
-  letter-spacing: 2px;
-  color: var(--text);
+  display: flex;
+  align-items: center;
   text-decoration: none;
 
-  @include respond(md) {
-    font-size: 30px;
-  }
+  .logo-img {
+    height: 25px;
+    width: auto;
 
-  span { color: var(--orange); }
+    @include respond(md) {
+      height: 50px;
+    }
+  }
 }
 
 // Botão hambúrguer — só aparece em mobile/tablet

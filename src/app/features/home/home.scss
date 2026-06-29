@@ -31,40 +31,16 @@
 .hero-deco-2 { width: 300px; height: 300px; background: rgba(0, 201, 77, 0.06); bottom: 60px; right: 200px; }
 .hero-deco-3 { width: 200px; height: 200px; background: rgba(123, 0, 255, 0.05); bottom: -40px; left: 400px; }
 
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #FFF3EE;
-  border: 1px solid rgba(255, 77, 0, 0.25);
-  color: var(--orange);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 6px 16px;
-  border-radius: var(--radius-pill);
-  margin-bottom: var(--space-md);
-  width: fit-content;
-
-  &::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: var(--orange);
-    border-radius: 50%;
-  }
-}
 
 .hero-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(48px, 12vw, 140px);
+  font-size: clamp(72px, 10vw, 140px);
   line-height: 0.95;
   letter-spacing: -1px;
   color: var(--text);
   position: relative;
   z-index: 2;
-  max-width: 800px;
+  max-width: 50rem;
 
   .accent { color: var(--orange); }
   .outline {
@@ -88,6 +64,7 @@
 .hero-actions {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: var(--space-sm);
   margin-top: var(--space-lg);
   align-items: stretch;
@@ -100,7 +77,6 @@
 
 .btn-primary,
 .btn-secondary {
-  font-family: 'Syne', sans-serif;
   font-weight: 800;
   font-size: 14px;
   letter-spacing: 0.5px;
