@@ -7,7 +7,7 @@ export interface CarouselSlide {
   titulo: string;
   meta: string;
   ctaLabel: string;
-  gradiente: string; // ex: 'linear-gradient(135deg, #FF4D00 0%, #E8000D 60%, #7B00FF 100%)'
+  gradiente: string;
 }
 
 @Component({
