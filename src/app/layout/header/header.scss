@@ -10,9 +10,20 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 16px var(--page-padding);
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
+  isolation: isolate;
+
+  // O fundo translúcido + blur agora vive num pseudo-elemento, não
+  // direto no <nav> — assim o <nav> não vira "containing block" do
+  // .nav-links (position:fixed), que é o que causava o bug.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+  }
 }
 
 .logo {
@@ -71,7 +82,9 @@ nav {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 199; // adicionar — garante empilhamento explícito
   background: #fff;
+  opacity: 1; // adicionar — garante 100% opaco
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-lg);
